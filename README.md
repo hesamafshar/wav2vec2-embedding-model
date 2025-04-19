@@ -23,6 +23,6 @@ The goal of this project is to explore and implement the Wav2Vec2 model, includi
 
 - Based on the Facebook AI Research paper: *"wav2vec 2.0: A Framework for Self-Supervised Learning of Speech Representations"*
 - Hugging Face Transformers library is used for model loading and inference.
-https://huggingface.co/blog/fine-tune-wav2vec2-english
    ```
+https://huggingface.co/blog/fine-tune-wav2vec2-english
 
