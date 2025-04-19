@@ -24,13 +24,6 @@ The goal of this project is to explore and implement the Wav2Vec2 model, includi
 - Based on the Facebook AI Research paper: *"wav2vec 2.0: A Framework for Self-Supervised Learning of Speech Representations"*
 - Hugging Face Transformers library is used for model loading and inference.
 
-## 🚀 How to Use
-
-1. Clone the repository
-2. Open `Wav2Vec2_ASR_Training.ipynb` in Jupyter Notebook
-3. Install dependencies if needed:  
-   ```bash
-   pip install transformers torchaudio librosa
    ```
 4. Follow the notebook to experiment with audio embedding, classification, or speech recognition
 
