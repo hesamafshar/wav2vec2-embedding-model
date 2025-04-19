@@ -19,12 +19,21 @@ The goal of this project is to explore and implement the Wav2Vec2 model, includi
 - Visualizing speech features and embeddings.
 - Investigating performance on audio datasets.
 
+## 📊 About the Data
+
+The project uses the **Common Voice 11.0** English dataset by Mozilla, which is one of the largest open-source speech datasets suitable for ASR tasks.
+
+- **Dataset Source**: `mozilla-foundation/common_voice_11_0` via Hugging Face Datasets
+- **Streaming Mode**: Data is loaded using streaming to handle large datasets without full download
+- **Sampling Rate**: All audio files are resampled to 16,000 Hz
+- **Sample Sizes**:
+  - Training: 1,500 samples
+  - Testing: 300 samples
+- **Persistence**: Once extracted, datasets are saved locally for reusability using Hugging Face’s `save_to_disk()` feature
+
 ## 📚 Resources
 
 - Based on the Facebook AI Research paper: *"wav2vec 2.0: A Framework for Self-Supervised Learning of Speech Representations"*
 - Hugging Face Transformers library is used for model loading and inference.
-   ```
-   https://huggingface.co/blog/fine-tune-wav2vec2-english
-   ```
-
+https://huggingface.co/blog/fine-tune-wav2vec2-english
 
