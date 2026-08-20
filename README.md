@@ -1,39 +1,20 @@
-# Wav2Vec2 Embedding Model for Speech Representation
+# Wav2Vec2 for Speech Recognition
 
-This repository contains code and documentation for working with the Wav2Vec2 model, a state-of-the-art self-supervised model developed for extracting rich speech representations from raw audio waveforms.
+This project started from reading the original Wav2Vec 2.0 paper and trying to understand how its self-supervised speech representations can be used for automatic speech recognition in practice.
 
-## 📁 Repository Structure
+After reviewing the model, I looked for an accessible speech dataset with a similar setting and used the English part of Mozilla Common Voice 11.0. Because of the available computational resources, I worked with a smaller subset of 1,500 training samples and 300 test samples instead of trying to reproduce the large-scale experiments from the paper.
 
-```
-wav2vec2-embedding-model/
-├── Wav2Vec2_ASR_Training.ipynb     # Jupyter notebook implementing Wav2Vec2 model
-├── Wav2Vec2_Model_Overview.pdf     # Conceptual explanation and background of Wav2Vec2
-```
+I prepared the audio and transcripts, resampled the recordings to 16 kHz, and fine-tuned `facebook/wav2vec2-base-960h` with a CTC objective. The model was then evaluated on the held-out test set using Word Error Rate (WER). The goal here was mainly to go through the complete implementation and evaluation pipeline after studying the paper, rather than to match the full benchmark results reported for Wav2Vec2.
 
-## 🧠 Project Description
+## Repository files
 
-The goal of this project is to explore and implement the Wav2Vec2 model, including its application to speech recognition and representation learning. This includes:
+- `Wav2Vec2_ASR_Training.ipynb` -- data preparation, Wav2Vec2 fine-tuning, and WER evaluation
+- `Wave to vector embedding models.pdf` -- my report and technical overview of the model
 
-- Understanding the architecture of the Wav2Vec2 model.
-- Working with pre-trained models or training from scratch.
-- Visualizing speech features and embeddings.
-- Investigating performance on audio datasets.
+## Data
 
-## 📊 About the Data
+The notebook uses `mozilla-foundation/common_voice_11_0` through Hugging Face Datasets. Streaming was used to load a manageable subset of the original dataset, and the processed samples were saved locally for reuse during the experiments.
 
-The project uses the **Common Voice 11.0** English dataset by Mozilla, which is one of the largest open-source speech datasets suitable for ASR tasks.
+## Reference
 
-- **Dataset Source**: `mozilla-foundation/common_voice_11_0` via Hugging Face Datasets
-- **Streaming Mode**: Data is loaded using streaming to handle large datasets without full download
-- **Sampling Rate**: All audio files are resampled to 16,000 Hz
-- **Sample Sizes**:
-  - Training: 1,500 samples
-  - Testing: 300 samples
-- **Persistence**: Once extracted, datasets are saved locally for reusability using Hugging Face’s `save_to_disk()` feature
-
-## 📚 Resources
-
-- Based on the Facebook AI Research paper: *"wav2vec 2.0: A Framework for Self-Supervised Learning of Speech Representations"*
-- Hugging Face Transformers library is used for model loading and inference.
-https://huggingface.co/blog/fine-tune-wav2vec2-english
-
+A. Baevski, H. Zhou, A. Mohamed, and M. Auli, *wav2vec 2.0: A Framework for Self-Supervised Learning of Speech Representations*.
